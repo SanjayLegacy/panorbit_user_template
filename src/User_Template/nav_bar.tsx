@@ -34,14 +34,11 @@ function NavBar({ title }: { title: string }) {
                     <div className="p-4">
                         <div className="border-b-2" />
                     </div>
-                    <div className="w-full h-48 overflow-y-auto no-scrollbar p-4 self-center">
+                    <div className="flex flex-col w-full h-48 overflow-y-auto no-scrollbar divide-y-2 px-4">
                         {displayUsers?.map((user: UserModel, index: number) => (
-                            <div key={index} className='justify-center w-full flex flex-col self-center' onClick={() => dispatch(setLoggedInUser(user))}>
-                                <div className="align-middle">
+                            <div key={index} className='w-full flex flex-col items-center' onClick={() => dispatch(setLoggedInUser(user))}>
+                                <div className="mt-4">
                                     <UserCard user={user} />
-                                </div>
-                                <div className="p-2">
-                                    <div className="border-b-2" />
                                 </div>
                             </div>
                         ))}

@@ -5,7 +5,7 @@ import { userApi } from "../Api/user.api";
 import userReducer from "./userSlice";
 import { combineReducers } from 'redux';
 import { encryptTransform } from "redux-persist-transform-encrypt";
-import { persistReducer, persistStore } from "redux-persist";
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const reducers = combineReducers({
@@ -17,7 +17,6 @@ const reducers = combineReducers({
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['user', 'token'],
     transforms: [
         encryptTransform({
             secretKey: 'my-secret-key',
@@ -32,7 +31,9 @@ const store = configureStore({
     reducer: persistedReducer,
     middleware: getDefaultMiddleware => {
         const middlewares = getDefaultMiddleware({
-            serializableCheck: false
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
         })
             .concat(allApis.middleware)
             .concat(userApi.middleware);
@@ -43,4 +44,4 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 setupListeners(store.dispatch);
-export { store, persistor }
+export { store, persistor };

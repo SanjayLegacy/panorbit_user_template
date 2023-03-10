@@ -12,7 +12,7 @@ function SideBar() {
     return (
         <>
             <div className="flex flex-row h-screen w-screen p-5 pr-16 relative">
-                <section className="bg-blue-600 rounded-3xl flex flex-col items-start text-left justify-center pl-12 pr-8">
+                <section className="bg-gradient-to-b from-blue-600 to-purple-800 rounded-3xl flex flex-col items-start text-left justify-center pl-12 pr-8">
                     <div className="flex flex-row">
                         <div className="flex flex-col">
                             <NavLink to={`/profile`} className={(navData: any) => navData.isActive ? activeStyle.active : activeStyle.navLink}>Profile</NavLink>

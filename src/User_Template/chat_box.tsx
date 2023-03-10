@@ -65,7 +65,15 @@ function ChatBox() {
                                         <MdOutlineClose className="invert-icon w-6 h-6 text-white cursor-pointer" onClick={() => setCloseChat(false)} />
                                     </div>
                                 </div>
-                                <div className="flex flex-col w-full h-full bg-white border-x border-blue-600"></div>
+                                <div className="flex flex-col w-full h-full px-5 pt-2 bg-white border-x border-blue-600 gap-y-2">
+                                    <div className="flex flex-wrap p-2 h-20 w-60 text-sm text-gray-600 bg-gray-100 rounded-b-lg rounded-tr-lg">
+                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                    </div>
+                                    <div className="flex self-center text-sm text-gray-400 font-medium">9:16 PM</div>
+                                    <div className="flex flex-wrap p-2 h-15 w-60 text-sm text-gray-600 bg-gray-100 rounded-b-lg rounded-tl-lg self-end">
+                                        Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                                    </div>
+                                </div>
                                 <div className="flex flex-row w-full h-1/5 bg-white border border-gray-400">
                                     <div className="w-[90%] bg-white pr-1">
                                         <input className="h-full w-full px-1" />
