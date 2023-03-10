@@ -19,12 +19,7 @@ function LandingPage() {
     }, [usersSuccess, dispatch, usersData]);
 
     if (usersLoading) {
-        return <div
-            className="h-screen w-screen flex flex-col justify-center items-center"
-            style={{ backgroundImage: `url(${backGroundImage})` }}
-        >
-            <Spinner className="h-14 w-h-14" color="#2984FF" />
-        </div>
+        return <Spinner />
     }
 
     return (
