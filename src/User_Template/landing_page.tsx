@@ -6,16 +6,26 @@ import { userArray, setLoggedInUser } from "../Redux/userSlice";
 import { UserModel } from "../Model/user.model";
 import { useGetUsersQuery } from "../Api/user.api";
 import { useEffect } from "react";
+import Spinner from "./spinner";
 
 function LandingPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { data: usersData, isSuccess: usersSuccess } = useGetUsersQuery();
+    const { data: usersData, isSuccess: usersSuccess, isLoading: usersLoading } = useGetUsersQuery();
 
     useEffect(() => {
         if (usersSuccess) dispatch(userArray(usersData?.users));
     }, [usersSuccess, dispatch, usersData]);
+
+    if (usersLoading) {
+        return <div
+            className="h-screen w-screen flex flex-col justify-center items-center"
+            style={{ backgroundImage: `url(${backGroundImage})` }}
+        >
+            <Spinner className="h-14 w-h-14" color="#2984FF" />
+        </div>
+    }
 
     return (
         <div className="h-screen w-screen flex flex-col justify-center items-center" style={{ backgroundImage: `url(${backGroundImage})` }}>
